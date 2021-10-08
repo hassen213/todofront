@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Task</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date</th>
+    <th scope="col">Done</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let t of todo">
+    <th scope="row">{{t.id}}</th>
+    <td>{{t.task}}</td>
+    <td>{{t.description}}</td>
+    <td>@{{t.date}}</td>
+    <td>@{{t.done}}</td>
+  </tr>
+
+  </tbody>
+</table>

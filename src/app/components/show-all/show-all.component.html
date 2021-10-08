@@ -1,3 +1,4 @@
+<div class="container ">
 <table class="table table-striped">
   <thead>
   <tr>
@@ -19,3 +20,28 @@
 
   </tbody>
 </table>
+</div>
+
+<button (click)="showaddTodo()">Add todo</button>
+<div *ngIf="show" class="container ">
+  <h3>Add Todo</h3>
+  <form (ngSubmit)="addTodo()">
+
+
+      <label>Task</label>
+      <input type="text" class="form-control" id="Task" name="Task" [(ngModel)]="to.task">
+
+      <label>Description</label>
+      <input type="text" class="form-control" id="Description" name="Description" [(ngModel)]="to.description">
+
+
+      <label>Date</label>
+      <input type="date" id="Date" name="Date" [(ngModel)]="to.date">
+
+      <label>Done</label>
+      <input type="checkbox"id="Done" name="Done" [(ngModel)]="to.done">
+
+    <button class="btn btn-success " type="submit">Add</button>
+  </form>
+</div>
+

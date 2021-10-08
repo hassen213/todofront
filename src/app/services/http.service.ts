@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Todo} from "../models/todo";
+import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -10,10 +12,14 @@ export class HttpService {
 
   constructor(private http:HttpClient) {}
 
-    // public fetchAll():Observable<Todo[]>{
-    //   return this.http.get<Todo[]>(this.url+'findall');}
-
-    // la methode getListTodo() a pour but de recuperer les donnees de la partie backend via l'url "http://localhost:8083/todo/findall"
     getListTodo(){return this.http.get("http://localhost:8083/todo/findall");}
+
+    public addTodoFromRemote(todo: Todo): Observable<any> {
+      return this.http.post<any>(this.url+'add', todo)
+    }
+
+    deleteTodo(){
+
+    }
 
 }

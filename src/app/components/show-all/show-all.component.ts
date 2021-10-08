@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from "../../services/http.service";
 import {Todo} from "../../models/todo";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-show-all',
@@ -9,22 +10,28 @@ import {Todo} from "../../models/todo";
 })
 export class ShowAllComponent implements OnInit {
 
-  //creation d'un object de HttpService
-  constructor(private httpService:HttpService ) { }
-
-  //on declar cette variable pour stocker la list la dans
+  constructor(private httpService:HttpService, private fb:FormBuilder) { }
   todo : any;
+  to = new Todo();
+  show=false;
 
-  //ng onInit il est executer automatiquement lorsque show-all.component.html est executer
   ngOnInit(): void {
-    // this.httpService.fetchAll().subscribe(todo =>this.listOfTodos=todo);
     this.getListTodoFromService();
 
   }
 
-  // la methode getListTodoFromService a pour but de recuperer les donnees qui sont requiperer par la methode getListTodo qui est dans http.service.ts
   getListTodoFromService(){
     this.httpService.getListTodo().subscribe(data => {this.todo = data;});
+  }
+
+  addTodo() {
+    this.httpService.addTodoFromRemote(this.to).subscribe(
+      data => {console.log("responce received")},
+      error => {console.log("exception occured")})
+    this.ngOnInit();
+  }
+  showaddTodo(){
+    this.show= !this.show;
   }
 
 }

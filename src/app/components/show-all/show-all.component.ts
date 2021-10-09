@@ -34,4 +34,18 @@ export class ShowAllComponent implements OnInit {
     this.show= !this.show;
   }
 
+  deleteTodo(id: number) {
+    this.httpService.deleteTodoS(id).subscribe(
+      data => {console.log("responce received")},
+      error => {console.log("exception occured")}
+    )
+    this.ngOnInit();
+  }
+
+  findById(id:number){
+    this.httpService.findByIdS(id).subscribe(
+      data => {console.log("responce received")},
+      error => {console.log("exception occured")}
+    )
+  }
 }

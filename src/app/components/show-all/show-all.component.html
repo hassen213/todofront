@@ -16,32 +16,36 @@
     <td>{{t.description}}</td>
     <td>@{{t.date}}</td>
     <td>@{{t.done}}</td>
+    <td><button class="btn btn-danger" type="submit" (click)="deleteTodo(t.id)" >Delete todo</button></td>
+
   </tr>
 
   </tbody>
 </table>
 </div>
 
-<button (click)="showaddTodo()">Add todo</button>
-<div *ngIf="show" class="container ">
+<div class="container ">
+<button class="btn btn-success " type="submit" (click)="showaddTodo()">Add todo</button>
+<div *ngIf="show" >
   <h3>Add Todo</h3>
   <form (ngSubmit)="addTodo()">
 
 
       <label>Task</label>
-      <input type="text" class="form-control" id="Task" name="Task" [(ngModel)]="to.task">
+      <input type="text" class="form-control col-md-4" id="Task" name="Task" [(ngModel)]="to.task">
 
-      <label>Description</label>
-      <input type="text" class="form-control" id="Description" name="Description" [(ngModel)]="to.description">
+    <label>Description</label>
+      <input type="text" class="form-control col-md-4" id="Description" name="Description" [(ngModel)]="to.description">
 
 
       <label>Date</label>
-      <input type="date" id="Date" name="Date" [(ngModel)]="to.date">
+      <input type="date"class="form-control col-md-4" id="Date" name="Date" [(ngModel)]="to.date">
 
-      <label>Done</label>
-      <input type="checkbox"id="Done" name="Done" [(ngModel)]="to.done">
+      <label>Done
+      <input type="checkbox" id="Done" name="Done" [(ngModel)]="to.done">
+      </label>
 
-    <button class="btn btn-success " type="submit">Add</button>
+    <button class="btn btn-success col-md-2" type="submit" >Add</button>
   </form>
 </div>
-
+</div>

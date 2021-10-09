@@ -18,8 +18,14 @@ export class HttpService {
       return this.http.post<any>(this.url+'add', todo)
     }
 
-    deleteTodo(){
-
+    public deleteTodoS(id:number):Observable<any>{
+        return this.http.delete<Todo>(this.url+'delete/'+id);
     }
 
+    public  findByIdS(id: number):Observable<any>{
+        return this.http.get<any>(this.url+'findbyid/'+id);
+    }
+    public update(id: number, todo: Todo):Observable<any>{
+        return this.http.put<Todo>(this.url+'update/'+id, todo);
+    }
 }
